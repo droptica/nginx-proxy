@@ -1,3 +1,4 @@
 /certs/*
-!/certs/default.key
-!/certs/default.crt
+!/certs/default.key.example
+!/certs/default.crt.example
+/.idea/*
