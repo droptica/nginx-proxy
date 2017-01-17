@@ -1,4 +1,4 @@
 /certs/*
-!/certs/default.key.example
-!/certs/default.crt.example
+!/nginx/certs/default.key.example
+!/nginx/certs/default.crt.example
 /.idea/*
