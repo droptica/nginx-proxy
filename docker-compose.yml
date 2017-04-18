@@ -4,6 +4,7 @@ nginx:
   volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
     - ./certs:/etc/nginx/certs
+    - ./conf/nginx.conf:/etc/nginx/nginx.conf:ro
   ports:
     - 80:80 
     - 443:443 
