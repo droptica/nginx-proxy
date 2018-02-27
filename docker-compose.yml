@@ -3,9 +3,19 @@ nginx:
   container_name: nginx-proxy
   volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
-    - ./certs:/etc/nginx/certs
+    - ./nginx/certs:/etc/nginx/certs
+    - ./nginx/vhost.d:/etc/nginx/vhost.d
+    - ./nginx/html:/usr/share/nginx/html
   ports:
     - 80:80 
     - 443:443 
   restart: always 
 
+letsencrypt:
+  image: jrcs/letsencrypt-nginx-proxy-companion
+  container_name: letsencrypt
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+  volumes_from:
+    - nginx
+  restart: always
