@@ -1,5 +1,5 @@
 nginx:
-  image: droptica/nginx-proxy
+  image: jwilder/nginx-proxy:0.6.0
   container_name: nginx-proxy
   volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
