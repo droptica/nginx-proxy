@@ -6,16 +6,8 @@ nginx:
     - ./nginx/certs:/etc/nginx/certs
     - ./nginx/vhost.d:/etc/nginx/vhost.d
     - ./nginx/html:/usr/share/nginx/html
+    - ./nginx/conf.d/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
   ports:
     - 80:80 
     - 443:443 
-  restart: always 
-
-letsencrypt:
-  image: jrcs/letsencrypt-nginx-proxy-companion
-  container_name: letsencrypt
-  volumes:
-    - /var/run/docker.sock:/var/run/docker.sock:ro
-  volumes_from:
-    - nginx
   restart: always
