@@ -7,10 +7,11 @@ nginx:
     - ./nginx/vhost.d:/etc/nginx/vhost.d
     - ./nginx/html:/usr/share/nginx/html
     - ./nginx/conf.d/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
+    - ./nginx/conf.d/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
   ports:
     - 80:80 
     - 443:443 
-  restart: always 
+  restart: always
 
 letsencrypt:
   image: jrcs/letsencrypt-nginx-proxy-companion
