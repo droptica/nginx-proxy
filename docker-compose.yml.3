@@ -24,9 +24,14 @@ services:
     container_name: letsencrypt
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    volumes_from:
-      - nginx
+      - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/conf.d/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
+      - ./nginx/conf.d/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
     restart: always
+    environment:
+      NGINX_PROXY_CONTAINER: nginx-proxy
     networks:
       - nginx-proxy
 
